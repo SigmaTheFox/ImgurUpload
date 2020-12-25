@@ -36,4 +36,4 @@ function deleteImage(deleteHash) {
 }
 
 //uploadImage(image, "ImageTitle")
-// deleteImage(deleteHash)
+// deleteImage(deleteHash`)
