@@ -4,9 +4,8 @@ const params = new URLSearchParams();
 const url = "https://api.imgur.com/3";
 
 
-const clientID = "ClientID";
-const image = "imageURL";
-const deleteHash = "ImageDeleteHash";
+const { clientID, imageURL } = require("./info.json");
+const deleteHash = "DeleteHash";
 
 
 function uploadImage(imageURL, title) {
@@ -21,7 +20,8 @@ function uploadImage(imageURL, title) {
     })
         .then(res => res.json())
         .then(json => {
-            console.log(`image ID: ${json.data.id}, delete hash: ${json.data.deletehash}, link ${json.data.link}`)
+            console.log(json)
+            //console.log(`image ID: ${json.data.id}, delete hash: ${json.data.deletehash}, link ${json.data.link}`)
         })
 }
 
@@ -35,5 +35,5 @@ function deleteImage(deleteHash) {
         .then(json => console.log(json))
 }
 
-//uploadImage(image, "ImageTitle")
-// deleteImage(deleteHash`)
+//uploadImage(imageURL, "nsfw true test")
+deleteImage(deleteHash)
