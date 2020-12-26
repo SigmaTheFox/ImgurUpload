@@ -10,6 +10,9 @@ createAlbum("Album title", "Album description", "privacy");
 // Delete an album
 deleteAlbum("Album Delete Hash");
 
+// Get an alum's info
+getAlbum("Album ID")
+
 // Upload Image to imgur (Title and Album are optional)
 uploadImage("https://doma.in/image.png", "Image title", "Album Delete Hash");
 

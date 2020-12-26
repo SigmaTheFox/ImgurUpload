@@ -3,7 +3,7 @@ const { URLSearchParams } = require("url");
 const params = new URLSearchParams();
 const APIurl = "https://api.imgur.com/3";
 
-const { clientID, imageURL, albumHash, deleteHash } = require("./info.json");
+const { clientID, imageURL, albumHash, albumID, deleteHash } = require("./info.json");
 
 function createAlbum(albumTitle = "", albumDescription = "", albumPrivacy = "hidden") {
     params.append("title", albumTitle);
@@ -37,6 +37,21 @@ function deleteAlbum(albumHash) {
             if (json.status !== 200) return console.error(Error(json.data.error));
             console.log(json)
         })
+}
+
+function getAlbum(albumID) {
+    if (!albumID) return console.error(Error("The Album hash isn't defined"));
+    fetch(`${APIurl}/album/${albumID}`, {
+        method: "get",
+        headers: { "Authorization": `Client-ID ${clientID}` }
+    })
+    .then(res => res.json())
+    .catch(err => console.error(Error("There was an error")))
+    .then(json => {
+        if (json.status !== 200) return console.error(Error(json.data.error));
+        console.log(json)
+        console.log(json.data.images)
+    })
 }
 
 function uploadImage(imageURL, title = "", albumHash) {
@@ -78,5 +93,6 @@ function deleteImage(deleteHash) {
 
 //createAlbum()
 //deleteAlbum(albumHash)
+getAlbum(albumID)
 //uploadImage(imageURL, "", albumHash)
 //deleteImage(deleteHash)
