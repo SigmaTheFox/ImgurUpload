@@ -1,13 +1,13 @@
 {
   "name": "imgurupload",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple library to upload images to Imgur",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sigma The Fox",
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^2.6.1"
