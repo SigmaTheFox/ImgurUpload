@@ -3,19 +3,27 @@ Just something random I decided to work on to understand communicating with APIs
 
 ## Usage
 ```JS
+const ImgurJS = require("./index.js");
+const imgur = new ImgurJS("client", "thisIsAClientID");
+
 // Create an album. Everything is optional, by default there is no title, no description and the album is hidden
 // The privacy options are: "public", "hidden", "secret"
-createAlbum("Album title", "Album description", "privacy");
+imgur.createAlbum("Album title", "Album description", "privacy")
+.then(out => console.log(out))
 
 // Delete an album
-deleteAlbum("Album Delete Hash");
+imgur.deleteAlbum("Album Delete Hash")
+.then(out => console.log(out))
 
 // Get an alum's info
-getAlbum("Album ID")
+imgur.getAlbum("Album ID")
+.then(out => console.log(out))
 
 // Upload Image to imgur (Title and Album are optional)
-uploadImage("https://doma.in/image.png", "Image title", "Album Delete Hash");
+imgur.uploadMedia("https://doma.in/image.png", "Image title", "Album Delete Hash")
+.then(out => console.log(out))
 
 // Delete an uploaded image
-deleteImage("Image Delete Hash");
+imgur.deleteMedia("Image Delete Hash")
+.then(out => console.log(out))
 ```
